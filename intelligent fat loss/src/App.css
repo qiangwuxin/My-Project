@@ -1,0 +1,158 @@
+/* src/App.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  color: #2c3e50;
+  line-height: 1.6;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.page-content {
+  flex: 1;
+  padding: 20px 0 80px; /* 底部留出导航栏空间 */
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error-message {
+  color: #e74c3c;
+  background: #fce4e2;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  text-align: center;
+}
+
+.success-message {
+  color: #27ae60;
+  background: #e8f6ef;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  text-align: center;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  padding: 25px;
+  margin-bottom: 25px;
+}
+
+.btn {
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 16px;
+  border: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: #3498db;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #2980b9;
+}
+
+.btn-secondary {
+  background: #2ecc71;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #27ae60;
+}
+
+.btn-danger {
+  background: #e74c3c;
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #c0392b;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ecf0f1;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border 0.3s;
+  margin-bottom: 15px;
+}
+
+.form-control:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+@media (max-width: 768px) {
+  .page-content {
+    padding: 15px 0 70px;
+  }
+  
+  .card {
+    padding: 20px 15px;
+  }
+}

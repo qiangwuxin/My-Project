@@ -1,0 +1,130 @@
+.calorie-dashboard
+  background: white
+  border-radius: 20px
+  padding: 25px
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08)
+  margin-bottom: 20px
+
+  .dashboard-header
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 15px
+    
+    h3
+      margin: 0
+      font-size: 22px
+      color: #333
+      font-weight: 700
+    
+    .calorie-summary
+      display: flex
+      align-items: baseline
+      
+      .current-calories
+        font-size: 28px
+        font-weight: bold
+        color: #4b6cb7
+        
+      .divider
+        margin: 0 5px
+        color: #999
+        
+      .max-calories
+        font-size: 20px
+        color: #666
+        
+      .unit
+        margin-left: 5px
+        color: #666
+
+  .total-progress
+    margin-bottom: 25px
+    position: relative
+    
+    .progress-bar
+      height: 20px
+      border-radius: 10px
+      background: #4CAF50
+      transition: width 0.5s ease, background-color 0.5s ease
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1)
+    
+    .progress-labels
+      display: flex
+      justify-content: space-between
+      margin-top: 5px
+      font-size: 14px
+      color: #666
+
+  .meal-distribution
+    margin-bottom: 20px
+    
+    h4
+      margin: 0 0 15px 0
+      font-size: 18px
+      color: #333
+      font-weight: 600
+    
+    .meal-bars
+      display: flex
+      justify-content: space-around
+      height: 150px
+      align-items: flex-end
+      
+      .meal-bar
+        flex: 1
+        display: flex
+        flex-direction: column
+        align-items: center
+        height: 100%
+        max-width: 80px
+        
+        .bar-container
+          flex: 1
+          width: 40px
+          display: flex
+          align-items: flex-end
+          margin-bottom: 10px
+          background: #f0f4f8
+          border-radius: 8px
+          overflow: hidden
+          
+        .bar-fill
+          width: 100%
+          border-radius: 8px
+          transition: height 0.5s ease
+          background: linear-gradient(to top, #4b6cb7, #3a5699)
+        
+        .bar-label
+          text-align: center
+          
+          .meal-name
+            font-weight: bold
+            font-size: 14px
+            margin-bottom: 3px
+            color: #333
+            
+          .meal-calories
+            font-size: 14px
+            color: #666
+            font-weight: 500
+
+  .calorie-status
+    display: flex
+    justify-content: space-around
+    border-top: 1px solid #eee
+    padding-top: 15px
+    
+    .status-item
+      display: flex
+      align-items: center
+      
+      .status-indicator
+        width: 12px
+        height: 12px
+        border-radius: 50%
+        margin-right: 5px
+        
+      span
+        font-size: 14px
+        color: #666

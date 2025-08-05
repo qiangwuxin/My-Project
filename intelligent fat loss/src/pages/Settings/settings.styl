@@ -1,0 +1,227 @@
+// src/pages/Settings/style.styl
+@import '../../styles/variables.styl'
+
+.settings-container
+  display: flex
+  flex-direction: column
+  height: 100vh
+  width: 100vw
+  overflow: hidden
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%)
+  padding: 0
+  margin: 0
+
+.header
+  background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%)
+  color: white
+  padding: 20px 30px
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1)
+  z-index: 10
+  h1
+    font-size: 28px
+    color: white
+    margin-bottom: 8px
+  p
+    color: rgba(255,255,255,0.8)
+    font-size: 16px
+
+.settings-content
+  display: flex
+  gap: 30px
+  background: #fff
+  border-radius: 12px
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05)
+  overflow: hidden
+  flex: 1
+  margin: 20px
+  height: calc(100vh - 160px)
+
+.sidebar
+  width: 250px
+  background: $sidebar-bg
+  padding: 25px 0
+  .tab
+    padding: 15px 25px
+    display: flex
+    align-items: center
+    cursor: pointer
+    transition: all 0.3s ease
+    color: $text-primary
+    i
+      margin-right: 12px
+      font-size: 18px
+      width: 24px
+      text-align: center
+    &:hover
+      background: rgba($primary-color, 0.1)
+      color: $primary-color
+    &.active
+      background: rgba($primary-color, 0.1)
+      color: $primary-color
+      border-left: 3px solid $primary-color
+      font-weight: 600
+    &.logout
+      color: $danger-color
+      margin-top: 20px
+      &:hover
+        background: rgba($danger-color, 0.1)
+
+.main-content
+  flex: 1
+  padding: 30px
+  overflow-y: auto
+  h2
+    font-size: 22px
+    margin-bottom: 25px
+    color: $text-primary
+    padding-bottom: 15px
+    border-bottom: 1px solid $border-color
+
+.form-group
+  margin-bottom: 20px
+  label
+    display: block
+    margin-bottom: 8px
+    font-weight: 500
+    color: $text-primary
+  input[type="text"],
+  input[type="email"],
+  input[type="password"]
+    width: 100%
+    padding: 12px 15px
+    border: 1px solid $border-color
+    border-radius: 8px
+    font-size: 16px
+    transition: border 0.3s
+    &:focus
+      border-color: $primary-color
+      outline: none
+      box-shadow: 0 0 0 2px rgba($primary-color, 0.2)
+  &.checkbox
+    display: flex
+    align-items: flex-start
+    label
+      display: flex
+      align-items: center
+      margin-bottom: 5px
+      cursor: pointer
+      font-weight: normal
+      input
+        margin-right: 10px
+    .hint
+      margin-top: 5px
+      color: $text-secondary
+      font-size: 14px
+
+.save-btn
+  background: $primary-color
+  color: white
+  border: none
+  padding: 12px 25px
+  border-radius: 8px
+  font-size: 16px
+  cursor: pointer
+  transition: background 0.3s
+  margin-top: 10px
+  &:hover
+    background: darken($primary-color, 10%)
+
+.privacy-settings
+  .privacy-options
+    .option
+      padding: 20px 0
+      border-bottom: 1px solid $border-color
+      display: flex
+      justify-content: space-between
+      align-items: center
+      h3
+        font-size: 18px
+        margin-bottom: 5px
+      p
+        color: $text-secondary
+        font-size: 14px
+        max-width: 500px
+
+.toggle-switch
+  position: relative
+  display: inline-block
+  width: 50px
+  height: 24px
+  input
+    opacity: 0
+    width: 0
+    height: 0
+    &:checked + label
+      background: $primary-color
+      &:before
+        transform: translateX(26px)
+  label
+    position: absolute
+    cursor: pointer
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background: #ccc
+    transition: .4s
+    border-radius: 34px
+    &:before
+      position: absolute
+      content: ""
+      height: 20px
+      width: 20px
+      left: 2px
+      bottom: 2px
+      background: white
+      transition: .4s
+      border-radius: 50%
+
+.data-section
+  margin-top: 40px
+  h3
+    margin-bottom: 15px
+  .data-btn
+    display: flex
+    align-items: center
+    padding: 12px 20px
+    background: #f8f9fa
+    border: 1px solid $border-color
+    border-radius: 8px
+    margin-right: 15px
+    cursor: pointer
+    transition: all 0.3s
+    i
+      margin-right: 8px
+    &:hover
+      background: #e9ecef
+    &.delete
+      background: rgba($danger-color, 0.1)
+      color: $danger-color
+      border-color: rgba($danger-color, 0.3)
+      margin-top: 15px
+      &:hover
+        background: rgba($danger-color, 0.2)
+  .warning
+    color: $danger-color
+    font-size: 14px
+    margin-top: 10px
+    font-weight: 500
+
+// 响应式设计
+@media (max-width: 768px)
+  .settings-content
+    flex-direction: column
+  .sidebar
+    width: 100%
+    display: flex
+    overflow-x: auto
+    padding: 15px 10px
+    .tab
+      padding: 10px 15px
+      white-space: nowrap
+      border-left: none
+      &.active
+        border-bottom: 3px solid $primary-color
+        border-left: none
+      i
+        margin-right: 8px

@@ -1,0 +1,83 @@
+/* src/components/RequireAuth/style.styl */
+@import '../../styles/variables.styl'
+
+.auth-container
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  min-height: 100vh
+  padding: 20px
+  text-align: center
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%)
+
+.auth-icon
+  font-size: 64px
+  color: $primary-color
+  margin-bottom: 20px
+
+.auth-title
+  font-size: 28px
+  margin-bottom: 15px
+  color: $text-primary
+  font-weight: 700
+
+.auth-message
+  font-size: 18px
+  color: $text-secondary
+  margin-bottom: 30px
+  max-width: 600px
+  line-height: 1.6
+
+.auth-actions
+  display: flex
+  gap: 15px
+  flex-wrap: wrap
+  justify-content: center
+
+.auth-btn
+  padding: 12px 30px
+  border-radius: 8px
+  font-size: 16px
+  font-weight: 500
+  transition: all 0.3s
+  display: flex
+  align-items: center
+  cursor: pointer
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1)
+
+  i
+    margin-right: 8px
+
+.login-btn
+  background: $primary-color
+  color: white
+  border: none
+
+  &:hover
+    background: darken($primary-color, 10%)
+    transform: translateY(-2px)
+
+.register-btn
+  background: white
+  border: 1px solid $primary-color
+  color: $primary-color
+
+  &:hover
+    background: rgba($primary-color, 0.1)
+    transform: translateY(-2px)
+
+@media (max-width: 576px)
+  .auth-icon
+    font-size: 48px
+  
+  .auth-title
+    font-size: 24px
+  
+  .auth-message
+    font-size: 16px
+  
+  .auth-btn
+    width: 100%
+    justify-content: center
+    padding: 14px

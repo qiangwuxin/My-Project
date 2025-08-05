@@ -1,0 +1,663 @@
+.workout-container
+  display flex
+  flex-direction column
+  height 100vh
+  width 100vw
+  overflow hidden
+  background linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%)
+  font-family 'PingFang SC', 'Helvetica Neue', Arial, sans-serif
+  padding 0
+  margin 0
+
+  .header
+    background linear-gradient(135deg, #4b6cb7 0%, #182848 100%)
+    color white
+    padding 20px 30px
+    box-shadow 0 4px 12px rgba(0, 0, 0, 0.1)
+    z-index 10
+    
+    .page-title
+      font-size 28px
+      font-weight 700
+      margin 0 0 10px 0
+      text-shadow 0 2px 4px rgba(0,0,0,0.2)
+    
+    .user-info
+      display flex
+      align-items center
+      justify-content space-between
+      
+      .username
+        font-size 18px
+        font-weight 600
+        
+      .user-stats
+        display flex
+        gap 15px
+        font-size 14px
+        
+        span
+          background rgba(255,255,255,0.15)
+          padding 6px 12px
+          border-radius 20px
+          font-weight 500
+
+  .loading-overlay
+    position absolute
+    top 0
+    left 0
+    right 0
+    bottom 0
+    display flex
+    flex-direction column
+    justify-content center
+    align-items center
+    background rgba(255,255,255,0.9)
+    z-index 100
+    
+    .loading-spinner
+      width 60px
+      height 60px
+      border 5px solid rgba(75, 108, 183, 0.2)
+      border-top 5px solid #4b6cb7
+      border-radius 50%
+      animation spin 1s linear infinite
+      margin-bottom 20px
+    
+    p
+      font-size 18px
+      color #333
+      font-weight 500
+    
+    @keyframes spin
+      0% 
+        transform rotate(0deg)
+      100% 
+        transform rotate(360deg)
+
+  .error-message
+    background #ffebee
+    color #d32f2f
+    padding 20px
+    margin 20px
+    border-radius 12px
+    text-align center
+    box-shadow 0 2px 8px rgba(0,0,0,0.1)
+    
+    .retry-btn
+      background #4b6cb7
+      color white
+      border none
+      padding 10px 25px
+      border-radius 30px
+      margin-top 15px
+      font-weight 600
+      cursor pointer
+      transition all 0.3s
+      
+      &:hover
+        background #3a5699
+        transform translateY(-2px)
+        box-shadow 0 4px 8px rgba(0,0,0,0.15)
+
+  .tabs
+    display flex
+    background white
+    box-shadow 0 2px 8px rgba(0,0,0,0.05)
+    padding 0 30px
+    height 60px
+    
+    .tab
+      padding 0 25px
+      height 100%
+      display flex
+      align-items center
+      justify-content center
+      cursor pointer
+      font-size 16px
+      font-weight 500
+      color #666
+      border-bottom 3px solid transparent
+      transition all 0.3s
+      
+      &.active
+        color #4b6cb7
+        border-bottom 3px solid #4b6cb7
+        font-weight 600
+
+  .workout-content,
+  .progress-content,
+  .exercises-library
+    flex 1
+    overflow-y auto
+    padding 20px 30px
+    height calc(100vh - 180px)
+    
+  .day-selector
+    display flex
+    gap 15px
+    margin-bottom 25px
+    overflow-x auto
+    padding 10px 0
+    
+    .day-card
+      flex 0 0 auto
+      width 120px
+      height 120px
+      background white
+      border-radius 16px
+      display flex
+      flex-direction column
+      align-items center
+      justify-content center
+      box-shadow 0 4px 12px rgba(0,0,0,0.08)
+      cursor pointer
+      transition all 0.3s
+      padding 15px
+      
+      &.active
+        background #4b6cb7
+        color white
+        transform translateY(-5px)
+        box-shadow 0 8px 20px rgba(75, 108, 183, 0.4)
+        
+        .day-calories
+          color rgba(255,255,255,0.9)
+          
+          span
+            color white
+      
+      .day-name
+        font-size 18px
+        font-weight 600
+        margin-bottom 8px
+      
+      .day-calories
+        font-size 14px
+        color #888
+        
+        span
+          font-size 20px
+          font-weight 700
+          color #4b6cb7
+
+  .workout-details
+    background white
+    border-radius 20px
+    box-shadow 0 8px 30px rgba(0,0,0,0.08)
+    padding 25px
+    
+    .section-header
+      display flex
+      justify-content space-between
+      align-items center
+      margin-bottom 25px
+      padding-bottom 15px
+      border-bottom 1px solid #eee
+      
+      h2
+        font-size 22px
+        font-weight 700
+        margin 0
+        color #333
+      
+      .total-calories
+        font-size 18px
+        font-weight 600
+        color #4b6cb7
+        background rgba(75, 108, 183, 0.1)
+        padding 8px 15px
+        border-radius 20px
+
+  .exercise-list
+    display flex
+    flex-direction column
+    gap 20px
+    
+    .exercise-card
+      background white
+      border-radius 16px
+      box-shadow 0 4px 15px rgba(0,0,0,0.05)
+      padding 20px
+      transition all 0.3s
+      border-left 4px solid #4b6cb7
+      
+      &.completed
+        background rgba(75, 108, 183, 0.03)
+        border-left-color #8bc34a
+        .exercise-name
+          text-decoration line-through
+          opacity 0.7
+      
+      .exercise-header
+        display flex
+        justify-content space-between
+        align-items center
+        margin-bottom 15px
+        
+        .exercise-name
+          font-size 18px
+          font-weight 700
+          color #333
+        
+        .exercise-calories
+          font-size 16px
+          font-weight 600
+          color #e74c3c
+          background rgba(231, 76, 60, 0.1)
+          padding 6px 12px
+          border-radius 20px
+    
+      .exercise-details
+        display grid
+        grid-template-columns repeat(auto-fit, minmax(200px, 1fr))
+        gap 15px
+        margin-bottom 20px
+        
+        .detail
+          display flex
+          flex-direction column
+          
+          .label
+            font-size 13px
+            color #888
+            margin-bottom 4px
+            
+          span
+            font-size 16px
+            font-weight 500
+            color #333
+    
+      .exercise-actions
+        display flex
+        gap 12px
+        justify-content flex-end
+        
+        button
+          padding 8px 20px
+          border none
+          border-radius 30px
+          font-weight 500
+          cursor pointer
+          transition all 0.3s
+          
+          &.complete-btn
+            background rgba(139, 195, 74, 0.1)
+            color #8bc34a
+            
+            &.completed
+              background #8bc34a
+              color white
+          
+          &.info-btn
+            background rgba(75, 108, 183, 0.1)
+            color #4b6cb7
+            
+          &:hover
+            transform translateY(-2px)
+            box-shadow 0 4px 8px rgba(0,0,0,0.1)
+
+  .progress-content
+    .section-title
+      font-size 24px
+      font-weight 700
+      margin-bottom 25px
+      color #333
+    
+    .progress-chart
+      background white
+      border-radius 20px
+      box-shadow 0 8px 30px rgba(0,0,0,0.08)
+      padding 25px
+      margin-bottom 30px
+      
+      .chart-header
+        display grid
+        grid-template-columns 1fr 2fr 1fr
+        font-weight 600
+        color #666
+        padding-bottom 15px
+        margin-bottom 20px
+        border-bottom 1px solid #eee
+    
+    .progress-item
+      display grid
+      grid-template-columns 1fr 2fr 1fr
+      align-items center
+      margin-bottom 25px
+      
+      .day-name
+        font-weight 600
+        font-size 16px
+      
+      .calories
+        font-weight 600
+        color #e74c3c
+        text-align right
+      
+      .progress-bar-container
+        height 24px
+        background #f0f4f8
+        border-radius 12px
+        overflow hidden
+        
+        .progress-bar
+          height 100%
+          background linear-gradient(90deg, #4b6cb7, #3a5699)
+          border-radius 12px
+          position relative
+          transition width 1s ease-in-out
+          
+          .progress-text
+            position absolute
+            right 10px
+            top 50%
+            transform translateY(-50%)
+            color white
+            font-size 12px
+            font-weight 600
+    
+    .weekly-summary
+      display grid
+      grid-template-columns repeat(3, 1fr)
+      gap 20px
+      
+      .summary-card
+        background white
+        border-radius 20px
+        box-shadow 0 8px 30px rgba(0,0,0,0.08)
+        padding 25px
+        text-align center
+        
+        .summary-value
+          font-size 32px
+          font-weight 700
+          color #4b6cb7
+          margin-bottom 10px
+        
+        .summary-label
+          font-size 16px
+          color #666
+
+  .exercises-library
+    .section-title
+      font-size 24px
+      font-weight 700
+      margin-bottom 25px
+      color #333
+    
+    .exercise-categories
+      display grid
+      grid-template-columns repeat(auto-fit, minmax(240px, 1fr))
+      gap 20px
+      margin-bottom 40px
+      
+      .category-card
+        background white
+        border-radius 20px
+        box-shadow 0 8px 30px rgba(0,0,0,0.08)
+        padding 25px
+        text-align center
+        transition all 0.3s
+        cursor pointer
+        
+        &:hover
+          transform translateY(-5px)
+          box-shadow 0 12px 35px rgba(0,0,0,0.15)
+        
+        .category-icon
+          font-size 48px
+          margin-bottom 15px
+        
+        h3
+          font-size 20px
+          margin 0 0 10px 0
+          color #333
+        
+        p
+          color #666
+          font-size 15px
+          margin 0
+    
+    .popular-exercises
+      h3
+        font-size 20px
+        font-weight 600
+        margin-bottom 20px
+        color #333
+      
+      .exercise-grid
+        display grid
+        grid-template-columns repeat(auto-fill, minmax(300px, 1fr))
+        gap 20px
+        
+        .exercise-item
+          background white
+          border-radius 16px
+          box-shadow 0 4px 15px rgba(0,0,0,0.05)
+          padding 20px
+          display flex
+          cursor pointer
+          transition all 0.3s
+          
+          &:hover
+            transform translateY(-3px)
+            box-shadow 0 8px 25px rgba(0,0,0,0.1)
+          
+          .exercise-thumb
+            width 80px
+            height 80px
+            border-radius 12px
+            margin-right 15px
+            flex-shrink 0
+            overflow hidden
+            display flex
+            align-items center
+            justify-content center
+            background #f0f4f8
+            
+            img
+              width 100%
+              height 100%
+              object-fit cover
+            
+            .thumbnail-placeholder
+              font-size 12px
+              color #888
+              text-align center
+              padding 5px
+          
+          .exercise-info
+            flex 1
+            h4
+              font-size 18px
+              font-weight 700
+              margin 0 0 8px 0
+              color #333
+            
+            .exercise-meta
+              display flex
+              flex-direction column
+              gap 6px
+              font-size 14px
+              
+              span
+                display flex
+                align-items center
+                gap 6px
+                color #666
+
+  .no-plan
+    flex 1
+    display flex
+    flex-direction column
+    justify-content center
+    align-items center
+    padding 40px
+    text-align center
+    
+    p
+      font-size 20px
+      color #666
+      margin-bottom 30px
+    
+    .generate-btn
+      background #4b6cb7
+      color white
+      border none
+      padding 12px 35px
+      border-radius 30px
+      font-size 16px
+      font-weight 600
+      cursor pointer
+      transition all 0.3s
+      box-shadow 0 4px 15px rgba(75, 108, 183, 0.3)
+      
+      &:hover
+        background #3a5699
+        transform translateY(-3px)
+        box-shadow 0 8px 25px rgba(75, 108, 183, 0.4)
+
+  .detail-modal
+    position fixed
+    top 0
+    left 0
+    right 0
+    bottom 0
+    display flex
+    justify-content center
+    align-items center
+    z-index 1000
+    
+    .modal-overlay
+      position absolute
+      top 0
+      left 0
+      right 0
+      bottom 0
+      background rgba(0,0,0,0.5)
+      backdrop-filter blur(5px)
+    
+    .modal-content
+      position relative
+      background white
+      border-radius 24px
+      width 90%
+      max-width 800px
+      max-height 90vh
+      overflow-y auto
+      box-shadow 0 25px 50px rgba(0,0,0,0.25)
+      padding 30px
+      z-index 1001
+      
+      .close-btn
+        position absolute
+        top 20px
+        right 20px
+        width 40px
+        height 40px
+        border-radius 50%
+        background #f5f7fa
+        border none
+        font-size 24px
+        display flex
+        align-items center
+        justify-content center
+        cursor pointer
+        transition all 0.3s
+        color #666
+        
+        &:hover
+          background #e74c3c
+          color white
+          transform rotate(90deg)
+      
+      .detail-loading,
+      .detail-error
+        text-align center
+        padding 40px 20px
+        
+        .loading-spinner
+          width 60px
+          height 60px
+          border 5px solid rgba(75, 108, 183, 0.2)
+          border-top 5px solid #4b6cb7
+          border-radius 50%
+          animation spin 1s linear infinite
+          margin 0 auto 20px
+        
+        p
+          font-size 18px
+          color #333
+          margin-bottom 20px
+        
+        .retry-btn
+          background #4b6cb7
+          color white
+          border none
+          padding 10px 25px
+          border-radius 30px
+          font-weight 600
+          cursor pointer
+          transition all 0.3s
+          
+          &:hover
+            background #3a5699
+            transform translateY(-2px)
+            box-shadow 0 4px 8px rgba(0,0,0,0.15)
+      
+      .exercise-detail
+        .detail-header
+          display flex
+          justify-content space-between
+          align-items center
+          margin-bottom 20px
+          
+          .detail-title
+            font-size 28px
+            font-weight 700
+            margin 0
+            color #333
+        
+        .detail-meta
+          display grid
+          grid-template-columns repeat(auto-fit, minmax(200px, 1fr))
+          gap 15px
+          margin-bottom 30px
+          padding 20px
+          background #f9fbfd
+          border-radius 16px
+          
+          .meta-item
+            display flex
+            flex-direction column
+            
+            .meta-label
+              font-size 14px
+              color #888
+              margin-bottom 4px
+            
+            .meta-value
+              font-size 16px
+              font-weight 500
+              color #333
+        
+        .detail-section
+          margin-bottom 25px
+          
+          h3
+            font-size 20px
+            font-weight 600
+            color #4b6cb7
+            margin 0 0 15px 0
+            padding-bottom 10px
+            border-bottom 2px solid #f0f4f8
+          
+          p
+            font-size 16px
+            line-height 1.7
+            color #444
+            margin 0
+            
+            &.detail-description
+              white-space pre-wrap
